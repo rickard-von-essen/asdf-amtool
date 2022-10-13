@@ -33,10 +33,11 @@ jobs:
         git clone https://github.com/asdf-vm/asdf.git
         bash -c '. asdf/asdf.sh'
 
-    - name: Install ASDF VM
+    - name: Verify plugin add and list-all versions
       run: |
         bash -c '. asdf/asdf.sh
         shellcheck -V
+        cd $GITHUB_WORKSPACE
         shellcheck bin/*
         asdf plugin-add $TOOL_NAME ./
         asdf list-all $TOOL_NAME
