@@ -1,6 +1,6 @@
 # asdf-amtool
 
-[![Build Status](https://travis-ci.org/rickard-von-essen/asdf-amtool.svg?branch=master)](https://travis-ci.org/rickard-von-essen/asdf-amtool)
+[![Build Status](https://github.com/rickard-von-essen/asdf-amtool/actions/workflows/ci.yml/badge.svg)](https://github.com/rickard-von-essen/asdf-amtool/actions)
 
 _amtool_ plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
 
