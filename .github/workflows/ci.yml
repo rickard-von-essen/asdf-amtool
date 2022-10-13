@@ -39,7 +39,7 @@ jobs:
         shellcheck -V
         cd $GITHUB_WORKSPACE
         shellcheck bin/*
-        asdf plugin-add $TOOL_NAME ./
+        asdf plugin-add $TOOL_NAME $GITHUB_WORKSPACE/
         asdf list-all $TOOL_NAME
-        asdf plugin-test $TOOL_NAME ./ "$TOOL_TEST_COMMAND" --asdf-tool-version $TOOL_VERSION'
+        asdf plugin-test $TOOL_NAME $GITHUB_WORKSPACE/ "$TOOL_TEST_COMMAND" --asdf-tool-version $TOOL_VERSION'
 
