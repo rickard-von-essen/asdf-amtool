@@ -18,6 +18,8 @@ jobs:
 
   linux:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
