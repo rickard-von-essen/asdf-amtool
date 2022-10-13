@@ -1,0 +1,45 @@
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  TOOL_NAME: amtool
+  TOOL_VERSION: v0.24.0
+  TOOL_TEST_COMMAND: amtool --version
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  linux:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout the code
+      uses: actions/checkout@v3
+
+    - name: Install ASDF VM
+      run: |
+        apt-get update
+        apt-get install -y shellcheck git bash
+        git clone https://github.com/asdf-vm/asdf.git
+        bash -c '. asdf/asdf.sh'
+
+    - name: Verify plugin add and list-all versions
+      run: |
+        bash -c '. asdf/asdf.sh
+        shellcheck -V
+        cd $GITHUB_WORKSPACE
+        shellcheck bin/*
+        asdf plugin-add $TOOL_NAME $GITHUB_WORKSPACE/
+        asdf list-all $TOOL_NAME
+        asdf plugin-test $TOOL_NAME $GITHUB_WORKSPACE/ "$TOOL_TEST_COMMAND" --asdf-tool-version $TOOL_VERSION'
+
