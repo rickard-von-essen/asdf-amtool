@@ -29,12 +29,13 @@ jobs:
     - name: Install ASDF VM
       run: |
         apt-get update
-        apt-get install -y shellcheck git
+        apt-get install -y shellcheck git bash
         git clone https://github.com/asdf-vm/asdf.git
-        . asdf/asdf.sh
+        bash -c '. asdf/asdf.sh'
 
     - name: Install ASDF VM
       run: |
+        . asdf/asdf.sh
         shellcheck -V
         shellcheck bin/*
         asdf plugin-add $TOOL_NAME ./
