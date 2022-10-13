@@ -35,10 +35,10 @@ jobs:
 
     - name: Install ASDF VM
       run: |
-        . asdf/asdf.sh
+        bash -c '. asdf/asdf.sh
         shellcheck -V
         shellcheck bin/*
         asdf plugin-add $TOOL_NAME ./
         asdf list-all $TOOL_NAME
-        asdf plugin-test $TOOL_NAME ./ "$TOOL_TEST_COMMAND" --asdf-tool-version $TOOL_VERSION
+        asdf plugin-test $TOOL_NAME ./ "$TOOL_TEST_COMMAND" --asdf-tool-version $TOOL_VERSION'
 
